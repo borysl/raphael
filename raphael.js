@@ -1594,6 +1594,7 @@
      o }
     \*/
     R.findDotsAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
+        t = t || 0;
         var t1 = 1 - t,
             t13 = pow(t1, 3),
             t12 = pow(t1, 2),
@@ -5959,8 +5960,9 @@
                 o._.arrows = {};
             }
             if (type != "none") {
-                var pathId = "raphael-marker-" + type,
-                    markerId = "raphael-marker-" + se + type + w + h;
+                var randSuffix = Math.random().toString(36).substring(7);
+                var pathId = "raphael-marker-" + type + randSuffix,
+                    markerId = "raphael-marker-" + se + type + w + h + randSuffix;
                 if (!R._g.doc.getElementById(pathId)) {
                     p.defs.appendChild($($("path"), {
                         "stroke-linecap": "round",
